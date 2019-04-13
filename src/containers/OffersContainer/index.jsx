@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { offersListType } from '../../types/offerTypes';
-import { getOffers, showAllOffers } from '../../actions/offersActions';
+import { offersListType } from 'types/offerTypes';
+import { getOffers, showAllOffers } from 'actions/offersActions';
 import {
   getOffersList,
   getIsLoadingList,
   getIsFullOffers,
-} from '../../selectors/offers';
-import Spinner from '../../components/Spinner';
-import Offers from '../../components/OffersList';
+} from 'selectors/offers';
+import Spinner from 'components/Spinner';
+import Offers from 'components/OffersList';
 
 class OffersContainer extends Component {
   static propTypes = {
@@ -32,15 +32,7 @@ class OffersContainer extends Component {
     console.log('%c this.props', 'color: #0087d4', this.props);
     const { items, isLoading } = this.props;
 
-    return (
-      <div className="Offers">
-        <div className="Offers__head">
-          <h1 className="Offers__title">Offers</h1>
-        </div>
-
-        {isLoading ? <Spinner /> : <Offers items={items} />}
-      </div>
-    );
+    return <div>{isLoading ? <Spinner /> : <Offers items={items} />}</div>;
   }
 }
 

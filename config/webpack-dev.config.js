@@ -8,7 +8,7 @@ module.exports = merge(webpackCommon, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   plugins: [
-    new ExtractTextPlugin('light.css', { allChunks: true }), // light dark fonts
+    new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.IgnorePlugin(/^\.\/(?!(en|ru))(.+)$/, /validatorjs\/src\/lang/),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev'),
