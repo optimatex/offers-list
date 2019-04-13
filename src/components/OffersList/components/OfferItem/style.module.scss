@@ -1,0 +1,33 @@
+.item {
+  padding-bottom: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: #ccc;
+  position: relative;
+}
+
+.content {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.photo {
+  height: 70%;
+  margin-bottom: 10%;
+  display: flex;
+  align-items: flex-end;
+
+  img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
