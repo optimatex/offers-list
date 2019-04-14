@@ -1,15 +1,15 @@
-import * as types from "../constants/ActionTypes";
-import initialState from "./initialState";
+import * as types from 'constants/offersActionTypes';
+import initialState from './initialState';
 
-export default function reducer(state = initialState, action) {
+export default function offersReducer(state = initialState, action) {
   switch (action.type) {
     case types.GET_OFFERS_REQUEST:
       return {
         ...state,
         list: {
           ...state.list,
-          isLoading: true
-        }
+          isLoading: true,
+        },
       };
     case types.GET_OFFERS_SUCCESS:
       return {
@@ -20,9 +20,9 @@ export default function reducer(state = initialState, action) {
           data: {
             ...state.list.data,
             items: action.payload.items,
-            count: action.payload.count
-          }
-        }
+            count: action.payload.count,
+          },
+        },
       };
 
     default:

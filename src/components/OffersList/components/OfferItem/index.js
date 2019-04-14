@@ -1,13 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { offerItemType } from 'types/offerTypes';
 import './style.module.scss';
 
-const OfferItem = ({ item: { description, images } }) => (
+const getProperImage = (appWidth, images) => {
+  if (appWidth > 900) return images.large;
+  if (appWidth > 500) return images.medium;
+  return images.small;
+};
+
+const OfferItem = ({ appWidth, item: { description, images } }) => (
   <div styleName="item">
     <div styleName="content">
       <div styleName="photo">
-        <img src={images.medium} />
+        <img src={getProperImage(appWidth, images)} />
       </div>
       {description}
     </div>
@@ -16,6 +23,7 @@ const OfferItem = ({ item: { description, images } }) => (
 
 OfferItem.propTypes = {
   item: offerItemType,
+  appWidth: PropTypes.number,
 };
 
 OfferItem.defaultProps = {

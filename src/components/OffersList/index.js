@@ -1,23 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import OfferItem from "./components/OfferItem";
+import { getAppWidth } from 'selectors/view';
+import OfferItem from './components/OfferItem';
 import './style.module.scss';
 
-const OffersList = ({ items }) => (
+const OffersList = ({ appWidth, items }) => (
   <div styleName="list">
     {items.map(item => (
-      <OfferItem item={item} key={item.id} />
+      <OfferItem item={item} appWidth={appWidth} key={item.id} />
     ))}
   </div>
 );
 
 OffersList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({}))
+  items: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 OffersList.defaultProps = {
-  items: []
+  items: [],
 };
 
-export default OffersList;
+const mapStateToProps = state => ({
+  appWidth: getAppWidth(state),
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(OffersList);

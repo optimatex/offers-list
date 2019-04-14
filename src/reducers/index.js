@@ -1,5 +1,6 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import offers from "./offers";
+import view from './view/reducer';
+import offers from './offers/reducer';
 
-export default combineReducers({ offers });
+export default combineReducers({ view, offers });
