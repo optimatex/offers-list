@@ -6,6 +6,6 @@ export default {
       items: [],
       count: 0,
     },
-    isFullOffers: false,
+    sortOption: 'name',
   },
 };
