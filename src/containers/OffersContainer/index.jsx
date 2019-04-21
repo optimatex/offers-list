@@ -26,7 +26,11 @@ class OffersContainer extends Component {
 
   render() {
     const { items, isLoading } = this.props;
-
+    console.log(
+      '%c OffersContainer',
+      'color: black',
+      items.map(i => i.sortIndexes.popularity),
+    );
     return <div>{isLoading ? <Spinner /> : <Offers items={items} />}</div>;
   }
 }

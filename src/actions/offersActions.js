@@ -1,6 +1,6 @@
 import * as types from 'constants/offersActionTypes';
 import sortByIndex from 'utils/sortByIndex';
-import { getSortOption } from 'selectors/offers';
+import { getSortOption, getOffersList } from 'selectors/offers';
 import * as api from './api';
 
 /*
@@ -18,11 +18,7 @@ export const getOffers = () => async (dispatch, getState) => {
 
     // lets sort the array by the default sort type
     const sorted = data.offers.sort(sortByIndex(currentSortOption));
-    console.log(
-      '%c sorted',
-      'color: #C3D400',
-      sorted.map(i => i.sortIndexes[currentSortOption]),
-    );
+
     await dispatch({
       type: types.GET_OFFERS_SUCCESS,
       payload: {
@@ -38,4 +34,26 @@ export const getOffers = () => async (dispatch, getState) => {
       },
     });
   }
+};
+
+/*
+  Sort Offers
+*/
+export const sortOffers = newSortValue => async (dispatch, getState) => {
+  const currentList = getOffersList(getState());
+
+  // lets sort the array by the default sort type
+  const sorted = currentList.sort(sortByIndex(newSortValue));
+  console.log(
+    '%c sorted',
+    'color: #C3D400',
+    sorted.map(i => i.sortIndexes[newSortValue]),
+  );
+  await dispatch({
+    type: types.SORT_OFFERS,
+    payload: {
+      newSortOption: newSortValue,
+      items: sorted,
+    },
+  });
 };

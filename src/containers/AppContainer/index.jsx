@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import OffersContainer from 'containers/OffersContainer';
+import Sorter from 'components/Sorter';
 import { setAppWidth } from 'actions/viewActions';
 import './style.module.scss';
 
@@ -28,6 +29,8 @@ class AppContainer extends Component {
   render() {
     return (
       <div styleName="app-container">
+        <Sorter />
+
         <OffersContainer />
       </div>
     );

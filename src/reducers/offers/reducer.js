@@ -24,6 +24,19 @@ export default function offersReducer(state = initialState, action) {
           },
         },
       };
+    case types.SORT_OFFERS: {
+      return {
+        ...state,
+        list: {
+          ...state.list,
+          data: {
+            ...state.list.data,
+            items: [...action.payload.items], // create the new array in order to re-render list
+          },
+          sortOption: action.payload.newSortOption,
+        },
+      };
+    }
 
     default:
       return state;
