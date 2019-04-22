@@ -44,11 +44,7 @@ export const sortOffers = newSortValue => async (dispatch, getState) => {
 
   // lets sort the array by the default sort type
   const sorted = currentList.sort(sortByIndex(newSortValue));
-  console.log(
-    '%c sorted',
-    'color: #C3D400',
-    sorted.map(i => i.sortIndexes[newSortValue]),
-  );
+
   await dispatch({
     type: types.SORT_OFFERS,
     payload: {
